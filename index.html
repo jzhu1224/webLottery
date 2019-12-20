@@ -1,4 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -18,6 +19,7 @@
         .ui-tabs .ui-tabs-panel {
             padding: 0;
         }
+
         table {
             margin: 12px auto;
             border-collapse: collapse;
@@ -51,8 +53,7 @@
         #main {
             color: #000;
             margin: 0 auto;
-            padding-top: 40px;
-            ;
+            padding-top: 40px;;
             width: 980px;
         }
 
@@ -81,8 +82,9 @@
             padding: 8px;
             width: 640px;
             text-align: center;
-/*            background: #fed07c;
-*/        }
+            /*            background: #fed07c;
+            */
+        }
 
         #current_step {
             line-height: 42px;
@@ -103,8 +105,9 @@
         #tabs-2,
         #tabs-3,
         #tabs-4 {
-/*            padding: 4px;
-*/            border: 1px solid #ccc;
+            /*            padding: 4px;
+            */
+            border: 1px solid #ccc;
         }
 
         #tabs-3 h3,
@@ -142,137 +145,203 @@
 </head>
 
 <body class="bg index">
-    <div id="container">
-        <div id="wrapper" class="mh">
-            <h2 style="text-align: center">在线抽奖</h2>
-            <script type="text/javascript">
-                var game;
+<div id="container">
+    <div id="wrapper" class="mh">
+        <h2 style="text-align: center">在线抽奖</h2>
+        <script type="text/javascript">
+          var game;
 
-                $(function() {
-                    $('#loading').hide();
-                    $('#tabs').slideDown('fast');
-                    $('#tabs').tabs();
+          $(function () {
+            $('#loading').hide();
+            $('#tabs').slideDown('fast');
+            $('#tabs').tabs();
 
-                    game = new Game();
-                    save_setting();
-                });
+            game = new Game();
+            save_setting();
+          });
 
-                // 绑定回车键盘操作
-                $(document).keypress(function(e) {
-                    switch (e.which) {
-                        case 13:
-                            game.process();
-                            break;
-                    }
-                });
+          // 绑定回车键盘操作
+          $(document).keypress(function (e) {
+            switch (e.which) {
+              case 13:
+                game.process();
+                break;
+            }
+          });
 
-            </script>
+        </script>
 
-            <div id="main">
-                <div id="loading" style="text-align: center; display: none;">
-                    <h2>Loading...</h2>
+        <div id="main">
+            <div id="loading" style="text-align: center; display: none;">
+                <h2>Loading...</h2>
+            </div>
+
+            <div id="tabs" style="display: block;" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+                <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+                    <li class="ui-corner-top ui-tabs-selected ui-state-active"><a href="#tabs-1">抽奖</a></li>
+                    <li class="ui-corner-top ui-state-default"><a href="#tabs-2">设置</a></li>
+                    <li class="ui-corner-top ui-state-default"><a href="#tabs-3">结果</a></li>
+                    <li class="ui-corner-top ui-state-default"><a href="#tabs-4">帮助</a></li>
+                </ul>
+
+                <div id="tabs-1" style="background: rgb(255, 158, 3);"
+                     class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+                    <!--                         <h1 id="event_title"><span>抽奖活动</span></h1>
+                     --> <img width="976px" style="margin: 0 2px 0 2px "
+          src="https://res.cloudinary.com/shenmanz/image/upload/v1574644145/shenma/event/internet/dengfenglai.jpg"/>
+                    <div id="rotate_div" style="display: block;">
+                        <div><span id="current_step" style="display: none;">一等奖(1个)</span></div>
+
+                        <div id="rolling_board" style="display: none;"><span style="color: #f33">员工L</span></div>
+
+                        <div id="print_box" style="display: block;">press Enter to start</div>
+                    </div>
                 </div>
+                <!-- /#tabs-1 -->
 
-                <div id="tabs" style="display: block;" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-                    <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
-                        <li class="ui-corner-top ui-tabs-selected ui-state-active"><a href="#tabs-1">抽奖</a></li>
-                        <li class="ui-corner-top ui-state-default"><a href="#tabs-2">设置</a></li>
-                        <li class="ui-corner-top ui-state-default"><a href="#tabs-3">结果</a></li>
-                        <li class="ui-corner-top ui-state-default"><a href="#tabs-4">帮助</a></li>
-                    </ul>
+                <div id="tabs-2" style="background: #fff;"
+                     class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
+                    <label>活动标题</label>
+                    <div><input type="text" name="title" value=""></div>
 
-                    <div id="tabs-1" style="background: rgb(255, 158, 3);" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
-<!--                         <h1 id="event_title"><span>抽奖活动</span></h1>
- -->                    <img width="976px" style="margin: 0 2px 0 2px " src="https://res.cloudinary.com/shenmanz/image/upload/v1574644145/shenma/event/internet/dengfenglai.jpg" />
-                        <div id="rotate_div" style="display: block;">
-                            <div><span id="current_step" style="display: none;">一等奖(1个)</span></div>
-
-                            <div id="rolling_board" style="display: none;"><span style="color: #f33">员工L</span></div>
-
-                            <div id="print_box" style="display: block;">press Enter to start</div>
-                        </div>
-                    </div>
-                    <!-- /#tabs-1 -->
-
-                    <div id="tabs-2" style="background: #fff;" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
-                        <label>活动标题</label>
-                        <div><input type="text" name="title" value=""></div>
-
-                        <label>奖项设置</label>
-                        <div>每行一个奖项, 格式为竖线分隔的: 奖项名|数量|每次抽几个|奖品</div>
-                        <textarea name="prizes" rows="6" cols="84">
-FUNPLEX VR|2|2|全日畅玩门票
-科大讯飞|1|1|翻译机
+                    <label>奖项设置</label>
+                    <div>每行一个奖项, 格式为竖线分隔的: 奖项名|数量|每次抽几个|奖品</div>
+                    <textarea name="prizes" rows="6" cols="84">
+TERRA|1|1|Foreo LUNA MINI 3
                         </textarea>
 
-                        <label>候选人列表</label>
-                        <div>每行一人, 或半角逗号分隔</div>
-                        <textarea name="candidates" rows="6" cols="84">
-                            0211108064	人家的鱼Bob
-                            021618567	M_RICK
-                            021316199	Steven F
-                            02102997028	Amber.Eliz.木
-                            02102272346	JYA666
-                            0275437888	Caroline梁艳0275437888
-                            021982288	Dev
-                            0225020930	zhang kai
-                            0220925615	Edison
-                            0212457204	YuanPei
-                            02108616766	Catherine
-                            021968868	Timothy Yang
-                            0224588399	Raymond XXX
-                            0275682232	神马！哪尼。。。
-                            0210574662	余林涛 Lintao
-                            021534888	I'm Patrick
-                            0211478159	小兜er
-                            0212885699	Mia
-                            021416789	Henk
-                            02108795911	Yolanda
-                            021548999	Samuel Tang
-                            021999726	Angela
-                            0211989588	じ💓ve Hebe
-                            0211995988	Nick
-                            0211887623	Roy Sun
-                            0272430598	Frank Xu 许立 - NZCBIA
-                            021373137	Nancy
-                            0272789776	陈国栋
-                            021809666	Keven
-                            021382303	Mr. Pang
-                            0274595566	Jojo Wang
-                            0212266330	Kyle
-                            0272369999	Henry
+                    <label>候选人列表</label>
+                    <div>每行一人, 或半角逗号分隔</div>
+                    <textarea name="candidates" rows="6" cols="84">
+                            0bile	name
+0211716219	新西兰吐槽君
+02102216765	钟11
+0210524212	👑Alex珂🌻
+0210345640	💗🍀Cecilia 丹丹🍀💗
+02102871950	Keri
+0221856699	Jia💕(纽澳购)
+0279638904	APhilobal菲乐澳新全球购
+02108498850	ジュン*賊Alisa
+0279661032	Tina
+02102854510	微笑の我^_^（时差+5小时）
+0211028275	Sabrina
+0220163882	🍡Tian🍬
+0212173431	Heather
+0220980831	Ivy Lim 👫👧
+02108381102	véro💗招代理
+0225253810	阳光下的海面
+02102705025	可心💋澳新美代购招代理
+02102683300	 Meihua
+0223786126	追逐 时差+5
+0221098836	angela海外商城
+0225058928	海淘宝宝
+0210338262	YEYE
+0212860889	赵小嘟他额娘
+0274209585	小熊🍄
+02108263801	Emma🎉
+02108855058	adam&Abbie 麻麻
+021500118	xiaoxiao
+0211898980	Tina
+0210512733	🌸*๑Ivy*ೄLi ABM黑卡代理
+0220253498	Kelly
+0212077882	清新自然的66
+02102885221	🌸Crystal🌸
+02041868000	J&K New Zealand
+0212856888	秀英-Shelley
+021550766	虫虫妈
+02108371192	小茉茉KIWI购
+0273423515	annazyw
+0275129468	yunshan
+0224503282	_  旭小肉。
+021554128	加家嘉佳
+0220748618	Vicky-（橘子媽）兼差代购
+0225654035	A🇳🇿果果一家在新西兰
+0221325291	然焱如心🍀慧杺芷言
+021806699	Fini yue
+0211744106	Yee
+0220365389	小白兔 时差+4💞
+02102556788	crissy
+0211834377	张丹
+0276663332	Mission Property-May
+0212387503	may
+0210316219	Hide_No_Boo
+0211645787	拥抱阳光_纽国保健品平价批发
+0210320543	carol yu
+0210562462	kiko
+0212087178	Aaron
+021708223	kent
+0212561464	維🐳
+02102499911	小鸵
+0211773130	纽村Lu +5
+0210445379	维康-新西兰代购+时差5小时
+02102977671	李月半
+0277779090	⁽⁽ ʚ ᴍᴀɴᴅʏ ɞ ⁾⁾
+0220162799	梅
+0210420941	大脑斧斧🐯
+02040157164	66
+0210359530	饭宝•H
+0275828288	桃子家奶粉代发--ICC招商
+0225885165	TiNa Lin🍀
+02102692660	小林
+0212966677	CQL
+0211113799	smartfish
+0210435418	小唐澳新代购
+021318233	LINDA🐳 ICC跨境招商
+0211357997	佩琪
+02102545995	新西兰Miya🌈🍀🐤赳妈
+02102549961	我是妹子(-᷅_-᷄)
+0211178572	蛋蛋👠👠
+0211671159	秀
+0221066886	Zoe Zhou
+02108686711	爱💖思南🌟Nuskin🌟阿胶糕
+02108409991	隼
+0275575707	helen要赚💰💰
+021969880	💦
+0212601185	田柏扬
+021995196	👑 綿羊苏 🎀
+0211500477	錢xy
+0225191668	ʏʟᴋ
+0212107989	碧海晴天
+0210704949	Busy Winny🐝
+02108289918	Alex
+0212366181‬	向日葵先生的种子
+02108738767	小倩在纽村
+0211663292	橙子
+02102828348	Kiko🍓珂珂🥕
+
                         </textarea>
 
-                        <label>跳动时间间隔</label>
-                        <div><input type="text" name="interval" value="50" style="width: 50px;"> ms</div>
+                    <label>跳动时间间隔</label>
+                    <div><input type="text" name="interval" value="50" style="width: 50px;"> ms</div>
 
-                        <label>背景图片</label>
-                        <div>可以输入图片链接使用网络上的图片, 也可以把图片拷贝到当前目录, 把图片文件名填入即可.</div>
-                        <div><input name="background_image" type="text" value="3.jpg"></div>
+                    <label>背景图片</label>
+                    <div>可以输入图片链接使用网络上的图片, 也可以把图片拷贝到当前目录, 把图片文件名填入即可.</div>
+                    <div><input name="background_image" type="text" value="3.jpg"></div>
 
 
-                        <p><input type="button" value="保存" onclick="save_setting()"></p>
-                    </div>
-                    <!-- /#tabs-2 -->
+                    <p><input type="button" value="保存" onclick="save_setting()"></p>
+                </div>
+                <!-- /#tabs-2 -->
 
-                    <div id="tabs-3" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
-                        <h2>一等奖</h2>员工L &nbsp;<br>
-                        <h2>二等奖</h2>员工M &nbsp;员工H &nbsp;<br>
-                        <h2>三等奖</h2>员工E &nbsp;员工A &nbsp;员工I &nbsp;员工B &nbsp;<br></div>
-                    <!-- /#tabs-3 -->
+                <div id="tabs-3" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
+                    <h2>一等奖</h2>员工L &nbsp;<br>
+                    <h2>二等奖</h2>员工M &nbsp;员工H &nbsp;<br>
+                    <h2>三等奖</h2>员工E &nbsp;员工A &nbsp;员工I &nbsp;员工B &nbsp;<br></div>
+                <!-- /#tabs-3 -->
 
-                    <div id="tabs-4" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
-                        <h2>抽奖软件</h2>
-                        <p>在浏览器上运行的抽奖程序</p>
+                <div id="tabs-4" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
+                    <h2>抽奖软件</h2>
+                    <p>在浏览器上运行的抽奖程序</p>
 
-                        <h3>操作方便</h3>
-                        <p>抽奖过程全键盘操作, 只需要按回车(Enter)键即可, 类似播放PPT幻灯片, 非常简单.</p>
+                    <h3>操作方便</h3>
+                    <p>抽奖过程全键盘操作, 只需要按回车(Enter)键即可, 类似播放PPT幻灯片, 非常简单.</p>
 
-                        <h3>配置灵活</h3>
-                        <p>可配置的选项有: 活动标题, 奖项, 候选人, 摇奖时的跳转速度, 背景图片. 其中, 每一个奖项, 可以一次开完, 也可以一次只开一部分. 例如, 三等奖一共6个, 每次只开2个, 需要开3次才能开完三等奖, 增加娱乐性. 图片可以更换为带自己公司Logo的图片, 以便适应当前节日, 所以, 本抽奖程序任何节日的任何类似的抽奖节目都可使用.</p>
+                    <h3>配置灵活</h3>
+                    <p>可配置的选项有: 活动标题, 奖项, 候选人, 摇奖时的跳转速度, 背景图片. 其中, 每一个奖项, 可以一次开完, 也可以一次只开一部分. 例如, 三等奖一共6个, 每次只开2个,
+                        需要开3次才能开完三等奖, 增加娱乐性. 图片可以更换为带自己公司Logo的图片, 以便适应当前节日, 所以, 本抽奖程序任何节日的任何类似的抽奖节目都可使用.</p>
 
-                        <h3>抽奖流程</h3>
-                        <pre>
+                    <h3>抽奖流程</h3>
+                    <pre>
 等待开始
 开场(open): 奖项介绍
 奖项循环: 如果多于一个奖项, 则循环
@@ -283,399 +352,399 @@ FUNPLEX VR|2|2|全日畅玩门票
 	奖项结束(step_close): 单项中奖名单
 闭场(close)
                         </pre>
-                    </div>
-                    <!-- /#tabs-4 -->
                 </div>
-
-                <script type="text/javascript">
-                    function in_array(item, list) {
-                        for (var i = 0; i < list.length; i++) {
-                            if (item == list[i]) {
-                                return true;
-                            }
-                        }
-                        return false;
-                    }
-
-                    /**
-                     * 返回指定元素在数组中的索引, 如果没找到, 返回-1;
-                     */
-                    function array_find(list, item) {
-                        for (var i = 0; i < list.length; i++) {
-                            if (item == list[i]) {
-                                return i;
-                            }
-                        }
-                        return -1;
-                    }
-
-                    // 从数组中删除元素. 返回新数组.
-                    function array_del(list, item) {
-                        var arr = [];
-                        for (var i = 0; i < list.length; i++) {
-                            if (item != list[i]) {
-                                arr.push(list[i]);
-                            }
-                        }
-                        return arr;
-                    }
-
-                    // 从数组中删除元素. 返回新数组.
-                    function array_del_all(list, items) {
-                        var arr = [];
-                        for (var i = 0; i < list.length; i++) {
-                            if (array_find(items, list[i]) == -1) {
-                                arr.push(list[i]);
-                            }
-                        }
-                        return arr;
-                    }
-
-                    /**
-                     * 把数组当作环形的, 返回从start开始, 一共count个元素.
-                     * 如果count大于数组长度, 返回整个数组.
-                     */
-                    function array_slice(list, start, count) {
-                        var ret;
-
-                        ret = list.slice(start, start + count);
-                        if (ret.length < count) {
-                            ret = ret.concat(list.slice(0, count - ret.length));
-                        }
-
-                        return ret;
-                    }
-
-                    // 扰乱数组元素的顺序.
-                    function array_shuffle(list) {
-                        var len = list.length;
-                        for (var i = 0; i < len * 5; i++) {
-                            var p1 = parseInt(len * Math.random());
-                            var p2 = parseInt(len * Math.random());
-                            var tmp = list[p1];
-                            list[p1] = list[p2];
-                            list[p2] = tmp;
-                        }
-                    }
-
-                    /*
-                    状态/动作
-
-                    开场(open)
-                    循环{
-                    	奖项开场(step_open)
-                    	奖项抽奖(rotate_start)
-                    	奖项抽奖(rotate_stop)
-                    	奖项闭场(step_close)
-                    }
-                    闭场(close)
-
-                    */
-                    var Game = function() {
-                        var self = this;
-
-                        this.step = -1;
-                        this.interval = 100;
-                        this.rotate_index = 0;
-                        self.action = 'open';
-
-                        this.prizes = [];
-                        this.candidates = [];
-                        this.results = [];
-
-                        this.init = function() {
-                            this.step = 0;
-                            this.stop = false;
-                            this.rotate_index = 0;
-                            self.action = 'open';
-                            this.results = [];
-
-                            for (var i = 0; i < self.prizes.length; i++) {
-                                var p = self.prizes[i];
-                                self.results[i] = [];
-                            }
-
-                            show_current_step('');
-                            var str = "press 'Enter' to start";
-                            str += '<br/><br/>';
-                            print_box("press 'Enter' to start");
-
-                            $('#rolling_board').hide();
-                            $('#rotate_div').css('background', '');
-                        }
-
-                        this.reset = function() {
-                            this.prizes = [];
-                            this.candidates = [];
-                            this.results = [];
-                        }
-
-                        this.process = function() {
-                            show_results();
-
-                            // 先更新状态再执行函数
-                            switch (self.action) {
-                                case 'open':
-                                    self.action = 'step_open';
-                                    $('#rotate_div').hide();
-                                    on_open();
-                                    $('#rotate_div').fadeIn('slow');
-                                    break;
-                                case 'close':
-                                    self.action = '';
-                                    on_close();
-                                    break;
-                                case 'step_open':
-                                    self.action = 'rotate_start';
-                                    $('#rotate_div').hide();
-                                    on_step_open();
-                                    $('#rotate_div').fadeIn('fast');
-                                    break;
-                                case 'step_close':
-                                    if (self.step == self.prizes.length) {
-                                        self.action = 'close';
-                                    } else {
-                                        self.action = 'step_open';
-                                    }
-                                    on_step_close();
-                                    break;
-                                case 'rotate_start':
-                                    self.action = 'rotate_stop';
-                                    on_rotate_start();
-                                    break;
-                                case 'rotate_stop':
-                                    on_rotate_stop();
-                                    break;
-                                default:
-                                    save_setting();
-                                    break;
-                            }
-                        };
-                    }
-
-                    function on_open() {
-                        show_current_step('活动说明');
-
-                        var str = '<table align="center">';
-                        str += '<tr><th>奖项</th><th>数量</th><th>奖品</th></tr>\n';
-                        for (var i = game.prizes.length - 1; i >= 0; i--) {
-                            var p = game.prizes[i];
-                            str += '<tr><td>' + p.name + '</td><td>' + p.num + '</td><td>' + p.award + '</td></tr>\n';
-                        }
-                        str += '</table>';
-                        print_box(str);
-                    }
-
-                    function on_close() {
-                        show_current_step('');
-
-                        $('#print_box').hide();
-                        var str = '';
-                        str += '<span><b style="font-size: 62px;">closed</b><span><br/>';
-                        print_box(str);
-                        $('#print_box').fadeIn('slow');
-                    }
-
-                    function on_step_open() {
-                        show_current_step();
-                        print_box("press 'Enter' to start");
-                        $('#rolling_board').html('...');
-                    }
-
-                    function on_step_close() {
-                        var str = '';
-                        str += '<span>&nbsp;中奖名单&nbsp;';
-                        var r = game.results[game.step - 1].map((number) => number.replaceAll(/(?<=\d{3})\d(?=\d{4})/,"*"));
-                        for (var n = 0; n < r.length; n++) {
-                            if(n % 2 == 0){
-                                str += '<br/>' + r[n];
-                            }else{
-                                str += '&nbsp;|&nbsp;' + r[n];
-                            }
-                        }
-                        str += '</span>';
-
-                        print_box(str);
-                        $('#rolling_board').slideUp('normal');
-                    }
-
-                    function on_rotate_start() {
-                        $('#rolling_board').slideDown('normal');
-
-                        game.interval = parseInt($('input[name=interval]').val());
-
-                        game.stop = false;
-                        game.rotate_index = 0;
-
-                        // 打乱顺序
-                        array_shuffle(game.candidates);
-
-                        rotate_run();
-
-                        show_current_step();
-                        print_box("press 'Enter' to stop");
-                    }
-
-
-                    function on_rotate_stop() {
-                        // 等一段随机时间再停止.
-                        game.interval += parseInt(0.9 * game.interval);
-                        setTimeout('game.stop=true', 230 + parseInt(230 * Math.random()));
-                        //game.stop = true;
-                    }
-
-
-                    function rotate_run() {
-                         String.prototype.replaceAll = function (FindText, RepText) {
-                            regExp = new RegExp(FindText, "g");
-                            return this.replace(regExp, RepText);
-                            };
-                        var num_a = game.prizes[game.step].num_a_time;
-                        var size = game.prizes[game.step].num - game.results[game.step].length;
-                        if (size > num_a) {
-                            size = num_a;
-                        }
-
-                        var arr = array_slice(game.candidates, game.rotate_index, size);
-                        $('#rolling_board').html(arr.map((number) => number.replaceAll(/(?<=\d{3})\d(?=\d{4})/,"*")).join(' '));
-
-                        game.rotate_index += num_a;
-                        if (game.rotate_index >= game.candidates.length) {
-                            game.rotate_index -= game.candidates.length;
-                        }
-
-                        if (game.stop) {
-                            game.action = 'rotate_start';
-
-                            game.results[game.step] = game.results[game.step].concat(arr);
-                            game.candidates = array_del_all(game.candidates, arr);
-
-                            show_results();
-                            print_box("press 'Enter' to continue");
-
-                            if (game.results[game.step].length == game.prizes[game.step].num) {
-                                game.step++;
-                                game.action = 'step_close';
-                            }
-
-                            var h = '<span style="color: #f33">' + $('#rolling_board').html() + '</span>';
-                            $('#rolling_board').html(h)
-                        } else {
-                            setTimeout('rotate_run()', game.interval);
-                        }
-                    }
-
-
-                    function show_current_step(str) {
-                        if (str == undefined) {
-                            var found = game.results[game.step].length;
-                            var all = game.prizes[game.step].num;
-                            var num_a = game.prizes[game.step].num_a_time;
-                            var b = (num_a + found) > all ? all : (num_a + found);
-
-                            var str = game.prizes[game.step].name ;
-                            if (num_a != all) {
-                                str += ', ' + (found + 1) + '-' + all;
-                            }
-                        }
-                        if (str == '') {
-                            $('#current_step').hide('fast');
-                        } else {
-                            $('#current_step').html(str);
-                            $('#current_step').show();
-                        }
-                    }
-
-                    function print_box(str) {
-                        if (str == undefined) {
-                            var str = '<span>';
-                            var r = game.results[game.step];
-                            for (var n = 0; n < r.length; n++) {
-                                str += r[n] + ' &nbsp;';
-                            }
-                            str += '</span>';
-                        }
-                        if (str == '') {
-                            $('#print_box').hide('fast');
-                        } else {
-                            $('#print_box').html(str);
-                            $('#print_box').show();
-                        }
-                    }
-
-                 function show_results() {
-                            String.prototype.replaceAll = function (FindText, RepText) {
-                            regExp = new RegExp(FindText, "g");
-                            return this.replace(regExp, RepText);
-                            };
-                        var str = '';
-                        for (var i = game.results.length - 1; i >= 0; i--) {
-                            str += '<h2>' + game.prizes[i].name + '</h2>';
-                            var r = game.results[i];
-                            for (var n = 0; n < r.length; n++) {
-                                str += r[n] + '<br/>';
-                            }
-                            str += '<br/>';
-                        }
-
-                        str += '---------------------------------------------------------------------------------------------------------<br/>';
-
-                        var str2 = '';
-
-                        for (var i = game.results.length - 1; i >= 0; i--) {
-                                str2 += '<h2>' + game.prizes[i].name + '</h2>';
-                                var r = game.results[i];
-                                for (var n = 0; n < r.length; n++) {
-                                    str2 += r[n] + '<br/>';
-                                }
-                                str2 = str2.replaceAll(/(?<=\d{3})\d(?=\d{4})/,"*");
-                                str2 += '<br/>';
-                            }
-                        str += str2;
-
-                            $('#tabs-3').html(str);
-                        }
-
-
-                    function save_setting() {
-                        game.reset();
-
-                        var ps = $.trim($('textarea[name=prizes]').val()).split('\n');
-                        for (var i = 0; i < ps.length; i++) {
-                            var p = $.trim(ps[i]);
-                            if (p.length == 0) {
-                                continue;
-                            }
-                            var ex = p.split('|');
-                            var prize = {
-                                name: $.trim(ex[0]),
-                                num: parseInt($.trim(ex[1])),
-                                num_a_time: parseInt($.trim(ex[2])),
-                                award: $.trim(ex[3])
-                            };
-                            game.prizes.push(prize);
-                        }
-
-                        var ps = $.trim($('textarea[name=candidates]').val()).replace(/,/g, '\n').split('\n');
-                        for (var i = 0; i < ps.length; i++) {
-                            var p = $.trim(ps[i]);
-                            if (p.length == 0) {
-                                continue;
-                            }
-                            game.candidates.push(p);
-                        }
-
-                        $('#event_title span').html($('input[name=title]').val());
-                        //$('#tabs-1').css('background', 'url(' + $('input[name=background_image]').val() + ') center center no-repeat');
-
-                        game.init();
-                    }
-                </script>
-
+                <!-- /#tabs-4 -->
             </div>
 
+            <script type="text/javascript">
+              function in_array(item, list) {
+                for (var i = 0; i < list.length; i++) {
+                  if (item == list[i]) {
+                    return true;
+                  }
+                }
+                return false;
+              }
+
+              /**
+               * 返回指定元素在数组中的索引, 如果没找到, 返回-1;
+               */
+              function array_find(list, item) {
+                for (var i = 0; i < list.length; i++) {
+                  if (item == list[i]) {
+                    return i;
+                  }
+                }
+                return -1;
+              }
+
+              // 从数组中删除元素. 返回新数组.
+              function array_del(list, item) {
+                var arr = [];
+                for (var i = 0; i < list.length; i++) {
+                  if (item != list[i]) {
+                    arr.push(list[i]);
+                  }
+                }
+                return arr;
+              }
+
+              // 从数组中删除元素. 返回新数组.
+              function array_del_all(list, items) {
+                var arr = [];
+                for (var i = 0; i < list.length; i++) {
+                  if (array_find(items, list[i]) == -1) {
+                    arr.push(list[i]);
+                  }
+                }
+                return arr;
+              }
+
+              /**
+               * 把数组当作环形的, 返回从start开始, 一共count个元素.
+               * 如果count大于数组长度, 返回整个数组.
+               */
+              function array_slice(list, start, count) {
+                var ret;
+
+                ret = list.slice(start, start + count);
+                if (ret.length < count) {
+                  ret = ret.concat(list.slice(0, count - ret.length));
+                }
+
+                return ret;
+              }
+
+              // 扰乱数组元素的顺序.
+              function array_shuffle(list) {
+                var len = list.length;
+                for (var i = 0; i < len * 5; i++) {
+                  var p1 = parseInt(len * Math.random());
+                  var p2 = parseInt(len * Math.random());
+                  var tmp = list[p1];
+                  list[p1] = list[p2];
+                  list[p2] = tmp;
+                }
+              }
+
+              /*
+              状态/动作
+
+              开场(open)
+              循环{
+                  奖项开场(step_open)
+                  奖项抽奖(rotate_start)
+                  奖项抽奖(rotate_stop)
+                  奖项闭场(step_close)
+              }
+              闭场(close)
+
+              */
+              var Game = function () {
+                var self = this;
+
+                this.step = -1;
+                this.interval = 100;
+                this.rotate_index = 0;
+                self.action = 'open';
+
+                this.prizes = [];
+                this.candidates = [];
+                this.results = [];
+
+                this.init = function () {
+                  this.step = 0;
+                  this.stop = false;
+                  this.rotate_index = 0;
+                  self.action = 'open';
+                  this.results = [];
+
+                  for (var i = 0; i < self.prizes.length; i++) {
+                    var p = self.prizes[i];
+                    self.results[i] = [];
+                  }
+
+                  show_current_step('');
+                  var str = "press 'Enter' to start";
+                  str += '<br/><br/>';
+                  print_box("press 'Enter' to start");
+
+                  $('#rolling_board').hide();
+                  $('#rotate_div').css('background', '');
+                }
+
+                this.reset = function () {
+                  this.prizes = [];
+                  this.candidates = [];
+                  this.results = [];
+                }
+
+                this.process = function () {
+                  show_results();
+
+                  // 先更新状态再执行函数
+                  switch (self.action) {
+                    case 'open':
+                      self.action = 'step_open';
+                      $('#rotate_div').hide();
+                      on_open();
+                      $('#rotate_div').fadeIn('slow');
+                      break;
+                    case 'close':
+                      self.action = '';
+                      on_close();
+                      break;
+                    case 'step_open':
+                      self.action = 'rotate_start';
+                      $('#rotate_div').hide();
+                      on_step_open();
+                      $('#rotate_div').fadeIn('fast');
+                      break;
+                    case 'step_close':
+                      if (self.step == self.prizes.length) {
+                        self.action = 'close';
+                      } else {
+                        self.action = 'step_open';
+                      }
+                      on_step_close();
+                      break;
+                    case 'rotate_start':
+                      self.action = 'rotate_stop';
+                      on_rotate_start();
+                      break;
+                    case 'rotate_stop':
+                      on_rotate_stop();
+                      break;
+                    default:
+                      save_setting();
+                      break;
+                  }
+                };
+              }
+
+              function on_open() {
+                show_current_step('活动说明');
+
+                var str = '<table align="center">';
+                str += '<tr><th>奖项</th><th>数量</th><th>奖品</th></tr>\n';
+                for (var i = game.prizes.length - 1; i >= 0; i--) {
+                  var p = game.prizes[i];
+                  str += '<tr><td>' + p.name + '</td><td>' + p.num + '</td><td>' + p.award + '</td></tr>\n';
+                }
+                str += '</table>';
+                print_box(str);
+              }
+
+              function on_close() {
+                show_current_step('');
+
+                $('#print_box').hide();
+                var str = '';
+                str += '<span><b style="font-size: 62px;">closed</b><span><br/>';
+                print_box(str);
+                $('#print_box').fadeIn('slow');
+              }
+
+              function on_step_open() {
+                show_current_step();
+                print_box("press 'Enter' to start");
+                $('#rolling_board').html('...');
+              }
+
+              function on_step_close() {
+                var str = '';
+                str += '<span>&nbsp;中奖名单&nbsp;';
+                var r = game.results[game.step - 1].map((number) => number.replaceAll(/(?<=\d{3})\d(?=\d{4})/, "*"));
+                for (var n = 0; n < r.length; n++) {
+                  if (n % 2 == 0) {
+                    str += '<br/>' + r[n];
+                  } else {
+                    str += '&nbsp;|&nbsp;' + r[n];
+                  }
+                }
+                str += '</span>';
+
+                print_box(str);
+                $('#rolling_board').slideUp('normal');
+              }
+
+              function on_rotate_start() {
+                $('#rolling_board').slideDown('normal');
+
+                game.interval = parseInt($('input[name=interval]').val());
+
+                game.stop = false;
+                game.rotate_index = 0;
+
+                // 打乱顺序
+                array_shuffle(game.candidates);
+
+                rotate_run();
+
+                show_current_step();
+                print_box("press 'Enter' to stop");
+              }
+
+
+              function on_rotate_stop() {
+                // 等一段随机时间再停止.
+                game.interval += parseInt(0.9 * game.interval);
+                setTimeout('game.stop=true', 230 + parseInt(230 * Math.random()));
+                //game.stop = true;
+              }
+
+
+              function rotate_run() {
+                String.prototype.replaceAll = function (FindText, RepText) {
+                  regExp = new RegExp(FindText, "g");
+                  return this.replace(regExp, RepText);
+                };
+                var num_a = game.prizes[game.step].num_a_time;
+                var size = game.prizes[game.step].num - game.results[game.step].length;
+                if (size > num_a) {
+                  size = num_a;
+                }
+
+                var arr = array_slice(game.candidates, game.rotate_index, size);
+                $('#rolling_board').html(arr.map((number) => number.replaceAll(/(?<=\d{3})\d(?=\d{4})/, "*")).join(' '));
+
+                game.rotate_index += num_a;
+                if (game.rotate_index >= game.candidates.length) {
+                  game.rotate_index -= game.candidates.length;
+                }
+
+                if (game.stop) {
+                  game.action = 'rotate_start';
+
+                  game.results[game.step] = game.results[game.step].concat(arr);
+                  game.candidates = array_del_all(game.candidates, arr);
+
+                  show_results();
+                  print_box("press 'Enter' to continue");
+
+                  if (game.results[game.step].length == game.prizes[game.step].num) {
+                    game.step++;
+                    game.action = 'step_close';
+                  }
+
+                  var h = '<span style="color: #f33">' + $('#rolling_board').html() + '</span>';
+                  $('#rolling_board').html(h)
+                } else {
+                  setTimeout('rotate_run()', game.interval);
+                }
+              }
+
+
+              function show_current_step(str) {
+                if (str == undefined) {
+                  var found = game.results[game.step].length;
+                  var all = game.prizes[game.step].num;
+                  var num_a = game.prizes[game.step].num_a_time;
+                  var b = (num_a + found) > all ? all : (num_a + found);
+
+                  var str = game.prizes[game.step].name;
+                  if (num_a != all) {
+                    str += ', ' + (found + 1) + '-' + all;
+                  }
+                }
+                if (str == '') {
+                  $('#current_step').hide('fast');
+                } else {
+                  $('#current_step').html(str);
+                  $('#current_step').show();
+                }
+              }
+
+              function print_box(str) {
+                if (str == undefined) {
+                  var str = '<span>';
+                  var r = game.results[game.step];
+                  for (var n = 0; n < r.length; n++) {
+                    str += r[n] + ' &nbsp;';
+                  }
+                  str += '</span>';
+                }
+                if (str == '') {
+                  $('#print_box').hide('fast');
+                } else {
+                  $('#print_box').html(str);
+                  $('#print_box').show();
+                }
+              }
+
+              function show_results() {
+                String.prototype.replaceAll = function (FindText, RepText) {
+                  regExp = new RegExp(FindText, "g");
+                  return this.replace(regExp, RepText);
+                };
+                var str = '';
+                for (var i = game.results.length - 1; i >= 0; i--) {
+                  str += '<h2>' + game.prizes[i].name + '</h2>';
+                  var r = game.results[i];
+                  for (var n = 0; n < r.length; n++) {
+                    str += r[n] + '<br/>';
+                  }
+                  str += '<br/>';
+                }
+
+                str += '---------------------------------------------------------------------------------------------------------<br/>';
+
+                var str2 = '';
+
+                for (var i = game.results.length - 1; i >= 0; i--) {
+                  str2 += '<h2>' + game.prizes[i].name + '</h2>';
+                  var r = game.results[i];
+                  for (var n = 0; n < r.length; n++) {
+                    str2 += r[n] + '<br/>';
+                  }
+                  str2 = str2.replaceAll(/(?<=\d{3})\d(?=\d{4})/, "*");
+                  str2 += '<br/>';
+                }
+                str += str2;
+
+                $('#tabs-3').html(str);
+              }
+
+
+              function save_setting() {
+                game.reset();
+
+                var ps = $.trim($('textarea[name=prizes]').val()).split('\n');
+                for (var i = 0; i < ps.length; i++) {
+                  var p = $.trim(ps[i]);
+                  if (p.length == 0) {
+                    continue;
+                  }
+                  var ex = p.split('|');
+                  var prize = {
+                    name: $.trim(ex[0]),
+                    num: parseInt($.trim(ex[1])),
+                    num_a_time: parseInt($.trim(ex[2])),
+                    award: $.trim(ex[3])
+                  };
+                  game.prizes.push(prize);
+                }
+
+                var ps = $.trim($('textarea[name=candidates]').val()).replace(/,/g, '\n').split('\n');
+                for (var i = 0; i < ps.length; i++) {
+                  var p = $.trim(ps[i]);
+                  if (p.length == 0) {
+                    continue;
+                  }
+                  game.candidates.push(p);
+                }
+
+                $('#event_title span').html($('input[name=title]').val());
+                //$('#tabs-1').css('background', 'url(' + $('input[name=background_image]').val() + ') center center no-repeat');
+
+                game.init();
+              }
+            </script>
+
         </div>
+
     </div>
+</div>
 </body>
 
 </html>
