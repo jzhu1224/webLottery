@@ -121,7 +121,7 @@
         }
 
         #rotate_div {
-            padding-top: 30px;
+            padding-top: 100px;
             height: 300px;
         }
 
@@ -129,7 +129,7 @@
             margin-top: 30px;
             font-weight: bold;
             font-size: 28px;
-            width: 70%;
+            width: 90%;
             margin-left: auto;
             margin-right: auto;
             text-align: center;
@@ -189,7 +189,7 @@
                     <h1 id="event_title"><span>抽奖活动</span></h1>
                     <img width="100px" style="margin: 0 2px 0 2px "
           src="https://res.cloudinary.com/shenmanz/image/upload/v1578336465/shenma/event/zene/zene.png"/>
-                    <div style="height: 200px; width: 976px;line-height: 120px;font-size: 42px; color: rgb(245, 205, 119)">
+                    <div style="height: 120px; width: 976px;line-height: 120px;font-size: 42px; color: rgb(245, 205, 119)">
                         禅e私房菜年夜饭 在线抽奖
                     </div>
                     <div id="rotate_div" style="display: block;">
@@ -210,9 +210,9 @@
                     <label>奖项设置</label>
                     <div>每行一个奖项, 格式为竖线分隔的: 奖项名|数量|每次抽几个|奖品</div>
                     <textarea name="prizes" rows="6" cols="84">
-禅e私房菜$188套餐|2|1|$188套餐
-禅e私房菜$288套餐|1|1|$288套餐
-禅e私房菜$618套餐|1|1|$618套餐
+禅e私房菜 $188套餐|2|1|$188套餐
+禅e私房菜 $288套餐|1|1|$288套餐
+禅e私房菜 $618套餐|1|1|$618套餐
                         </textarea>
 
                     <label>候选人列表</label>
@@ -539,13 +539,13 @@
 
               function on_step_close() {
                 var str = '';
-                str += '<span>&nbsp;中奖名单&nbsp;';
+                str += '<span style="font-size: 42px">&nbsp;中奖名单&nbsp;';
                 var r = game.results[game.step - 1].map((number) => number.replaceAll(/(?<=\d{3})\d(?=\d{4})/, "*"));
                 for (var n = 0; n < r.length; n++) {
                   if (n % 2 == 0) {
                     str += '<br/>' + r[n];
                   } else {
-                    str += '&nbsp;|&nbsp;' + r[n];
+                    str += '&nbsp;<br/>&nbsp;' + r[n];
                   }
                 }
                 str += '</span>';
