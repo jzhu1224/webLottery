@@ -15,7 +15,10 @@
     <script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
 
     <style type="text/css">
-
+        body{
+            margin: 0;
+            padding: 0;
+        }
         .ui-tabs .ui-tabs-panel {
             padding: 0;
         }
@@ -28,7 +31,7 @@
 
         th,
         td {
-            border: 2px solid #333;
+            padding: 4px 32px;
         }
 
         label {
@@ -508,7 +511,7 @@
               }
 
               function on_open() {
-                show_current_step('活动说明');
+                // show_current_step('活动说明');
 
                 var str = '<table align="center">';
                 str += '<tr><th>奖项</th><th>数量</th><th>奖品</th></tr>\n';
