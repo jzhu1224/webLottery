@@ -147,7 +147,7 @@
 <body class="bg index">
 <div id="container">
     <div id="wrapper" class="mh">
-        <h2 style="text-align: center">在线抽奖</h2>
+<!--        <h2 style="text-align: center">在线抽奖</h2>-->
         <script type="text/javascript">
           var game;
 
@@ -189,7 +189,7 @@
                     <h1 id="event_title"><span>抽奖活动</span></h1>
                     <img width="100px" style="margin: 0 2px 0 2px "
           src="https://res.cloudinary.com/shenmanz/image/upload/v1578336465/shenma/event/zene/zene.png"/>
-                    <div style="height: 200px; width: 976px;line-height: 300px;font-size: 36px; color: rgb(245, 205, 119)">
+                    <div style="height: 200px; width: 976px;line-height: 120px;font-size: 42px; color: rgb(245, 205, 119)">
                         禅e私房菜年夜饭 在线抽奖
                     </div>
                     <div id="rotate_div" style="display: block;">
@@ -210,9 +210,9 @@
                     <label>奖项设置</label>
                     <div>每行一个奖项, 格式为竖线分隔的: 奖项名|数量|每次抽几个|奖品</div>
                     <textarea name="prizes" rows="6" cols="84">
-禅e私房菜|2|1|$188套餐
-禅e私房菜|1|1|$288套餐
-禅e私房菜|1|1|$618套餐
+禅e私房菜$188套餐|2|1|$188套餐
+禅e私房菜$288套餐|1|1|$288套餐
+禅e私房菜$618套餐|1|1|$618套餐
                         </textarea>
 
                     <label>候选人列表</label>
@@ -613,7 +613,7 @@
                     game.action = 'step_close';
                   }
 
-                  var h = '<span style="color: #f33">' + $('#rolling_board').html() + '</span>';
+                  var h = '<span style="color: black">' + $('#rolling_board').html() + '</span>';
                   $('#rolling_board').html(h)
                 } else {
                   setTimeout('rotate_run()', game.interval);
