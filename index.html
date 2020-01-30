@@ -78,9 +78,9 @@
         #rolling_board {
             color: #fff;
             line-height: 40px;
-            font-size: 40px;
+            font-size: 20px;
             font-weight: bold;
-            margin: 34px auto;
+            margin: 16px auto;
             padding: 8px;
             width: 640px;
             text-align: center;
@@ -124,7 +124,7 @@
 
         #rotate_div {
             padding-top: 100px;
-            height: 300px;
+            min-height: 300px;
         }
 
         #print_box {
@@ -189,10 +189,14 @@
                 <div id="tabs-1" style="background-color: rgb(189,6,4);"
                      class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                     <h1 id="event_title"><span>抽奖活动</span></h1>
-                    <img width="100px" style="margin: 0 2px 0 2px "
-          src="https://res.cloudinary.com/shenmanz/image/upload/v1578336465/shenma/event/zene/zene.png"/>
+<!--                    <img width="100px" style="margin: 0 2px 0 2px "-->
+<!--          src="https://res.cloudinary.com/shenmanz/image/upload/v1578336465/shenma/event/zene/zene.png"/>-->
+                    <h1 style="color: ivory; font-size: 48px">SILVERMOON</h1>
                     <div style="height: 120px; width: 976px;line-height: 120px;font-size: 42px; color: rgb(245, 205, 119)">
-                        禅e私房菜年夜饭 在线抽奖
+                        新年正当红 专鼠新年礼抽奖
+                    </div>
+                    <div style="width: 976px;font-size: 32px; color: rgb(245, 205, 119)">
+                        （奥克兰）
                     </div>
                     <div id="rotate_div" style="display: block;">
                         <div><span id="current_step" style="display: none;">一等奖(1个)</span></div>
@@ -212,9 +216,7 @@
                     <label>奖项设置</label>
                     <div>每行一个奖项, 格式为竖线分隔的: 奖项名|数量|每次抽几个|奖品</div>
                     <textarea name="prizes" rows="6" cols="84">
-禅e私房菜 $188套餐|2|1|$188套餐
-禅e私房菜 $288套餐|1|1|$288套餐
-禅e私房菜 $618套餐|1|1|$618套餐
+日本海珠耳环|50|10|Akoya日本海珠耳环
                         </textarea>
 
                     <label>候选人列表</label>
@@ -541,7 +543,7 @@
 
               function on_step_close() {
                 var str = '';
-                str += '<span style="font-size: 42px">&nbsp;中奖名单&nbsp;';
+                str += '<span style="font-size: 20px">&nbsp;中奖名单&nbsp;';
                 var r = game.results[game.step - 1].map((number) => number.replaceAll(/(?<=\d{3})\d(?=\d{4})/, "*"));
                 for (var n = 0; n < r.length; n++) {
                   if (n % 2 == 0) {
@@ -615,7 +617,7 @@
                     game.action = 'step_close';
                   }
 
-                  var h = '<span style="color: black">' + $('#rolling_board').html() + '</span>';
+                  var h = '<span style="color: black; font-size: 20px">' + $('#rolling_board').html() + '</span>';
                   $('#rolling_board').html(h)
                 } else {
                   setTimeout('rotate_run()', game.interval);
