@@ -15,10 +15,11 @@
     <script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
 
     <style type="text/css">
-        body{
+        body {
             margin: 0;
             padding: 0;
         }
+
         .ui-tabs .ui-tabs-panel {
             padding: 0;
         }
@@ -150,27 +151,27 @@
 <body class="bg index">
 <div id="container">
     <div id="wrapper" class="mh">
-<!--        <h2 style="text-align: center">在线抽奖</h2>-->
+        <!--        <h2 style="text-align: center">在线抽奖</h2>-->
         <script type="text/javascript">
-          var game;
+            var game;
 
-          $(function () {
-            $('#loading').hide();
-            $('#tabs').slideDown('fast');
-            $('#tabs').tabs();
+            $(function () {
+                $('#loading').hide();
+                $('#tabs').slideDown('fast');
+                $('#tabs').tabs();
 
-            game = new Game();
-            save_setting();
-          });
+                game = new Game();
+                save_setting();
+            });
 
-          // 绑定回车键盘操作
-          $(document).keypress(function (e) {
-            switch (e.which) {
-              case 13:
-                game.process();
-                break;
-            }
-          });
+            // 绑定回车键盘操作
+            $(document).keypress(function (e) {
+                switch (e.which) {
+                    case 13:
+                        game.process();
+                        break;
+                }
+            });
 
         </script>
 
@@ -180,18 +181,18 @@
             </div>
 
             <div id="tabs" style="display: block;" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-<!--                <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">-->
-<!--                    <li class="ui-corner-top ui-tabs-selected ui-state-active"><a href="#tabs-1">抽奖</a></li>-->
-<!--                    <li class="ui-corner-top ui-state-default"><a href="#tabs-2">设置</a></li>-->
-<!--                    <li class="ui-corner-top ui-state-default"><a href="#tabs-3">结果</a></li>-->
-<!--                    <li class="ui-corner-top ui-state-default"><a href="#tabs-4">帮助</a></li>-->
-<!--                </ul>-->
+                <!--                <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">-->
+                <!--                    <li class="ui-corner-top ui-tabs-selected ui-state-active"><a href="#tabs-1">抽奖</a></li>-->
+                <!--                    <li class="ui-corner-top ui-state-default"><a href="#tabs-2">设置</a></li>-->
+                <!--                    <li class="ui-corner-top ui-state-default"><a href="#tabs-3">结果</a></li>-->
+                <!--                    <li class="ui-corner-top ui-state-default"><a href="#tabs-4">帮助</a></li>-->
+                <!--                </ul>-->
 
                 <div id="tabs-1" style="background-color: lightcoral;"
                      class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                     <h1 id="event_title"><span>抽奖活动</span></h1>
-<!--                    <img width="100px" style="margin: 0 2px 0 2px "-->
-<!--          src="https://res.cloudinary.com/shenmanz/image/upload/v1578336465/shenma/event/zene/zene.png"/>-->
+                    <!--                    <img width="100px" style="margin: 0 2px 0 2px "-->
+                    <!--          src="https://res.cloudinary.com/shenmanz/image/upload/v1578336465/shenma/event/zene/zene.png"/>-->
                     <h1 style="color: ivory; font-size: 48px">RIO里奥烘焙</h1>
                     <div style="height: 120px; width: 976px;line-height: 120px;font-size: 42px; color: rgb(245, 205, 119)">
                         召集2020年03月寿星活动抽奖
@@ -353,6 +354,7 @@
 0220309500	Nino
 0225877960	This is Sandy
 0275111105	jing
+0276200777  Lina 曹
                         </textarea>
 
                     <label>跳动时间间隔</label>
@@ -401,388 +403,388 @@
             </div>
 
             <script type="text/javascript">
-              function in_array(item, list) {
-                for (var i = 0; i < list.length; i++) {
-                  if (item == list[i]) {
-                    return true;
-                  }
-                }
-                return false;
-              }
-
-              /**
-               * 返回指定元素在数组中的索引, 如果没找到, 返回-1;
-               */
-              function array_find(list, item) {
-                for (var i = 0; i < list.length; i++) {
-                  if (item == list[i]) {
-                    return i;
-                  }
-                }
-                return -1;
-              }
-
-              // 从数组中删除元素. 返回新数组.
-              function array_del(list, item) {
-                var arr = [];
-                for (var i = 0; i < list.length; i++) {
-                  if (item != list[i]) {
-                    arr.push(list[i]);
-                  }
-                }
-                return arr;
-              }
-
-              // 从数组中删除元素. 返回新数组.
-              function array_del_all(list, items) {
-                var arr = [];
-                for (var i = 0; i < list.length; i++) {
-                  if (array_find(items, list[i]) == -1) {
-                    arr.push(list[i]);
-                  }
-                }
-                return arr;
-              }
-
-              /**
-               * 把数组当作环形的, 返回从start开始, 一共count个元素.
-               * 如果count大于数组长度, 返回整个数组.
-               */
-              function array_slice(list, start, count) {
-                var ret;
-
-                ret = list.slice(start, start + count);
-                if (ret.length < count) {
-                  ret = ret.concat(list.slice(0, count - ret.length));
+                function in_array(item, list) {
+                    for (var i = 0; i < list.length; i++) {
+                        if (item == list[i]) {
+                            return true;
+                        }
+                    }
+                    return false;
                 }
 
-                return ret;
-              }
-
-              // 扰乱数组元素的顺序.
-              function array_shuffle(list) {
-                var len = list.length;
-                for (var i = 0; i < len * 5; i++) {
-                  var p1 = parseInt(len * Math.random());
-                  var p2 = parseInt(len * Math.random());
-                  var tmp = list[p1];
-                  list[p1] = list[p2];
-                  list[p2] = tmp;
-                }
-              }
-
-              /*
-              状态/动作
-
-              开场(open)
-              循环{
-                  奖项开场(step_open)
-                  奖项抽奖(rotate_start)
-                  奖项抽奖(rotate_stop)
-                  奖项闭场(step_close)
-              }
-              闭场(close)
-
-              */
-              var Game = function () {
-                var self = this;
-
-                this.step = -1;
-                this.interval = 100;
-                this.rotate_index = 0;
-                self.action = 'open';
-
-                this.prizes = [];
-                this.candidates = [];
-                this.results = [];
-
-                this.init = function () {
-                  this.step = 0;
-                  this.stop = false;
-                  this.rotate_index = 0;
-                  self.action = 'open';
-                  this.results = [];
-
-                  for (var i = 0; i < self.prizes.length; i++) {
-                    var p = self.prizes[i];
-                    self.results[i] = [];
-                  }
-
-                  show_current_step('');
-                  var str = "press 'Enter' to start";
-                  str += '<br/><br/>';
-                  print_box("press 'Enter' to start");
-
-                  $('#rolling_board').hide();
-                  $('#rotate_div').css('background', '');
+                /**
+                 * 返回指定元素在数组中的索引, 如果没找到, 返回-1;
+                 */
+                function array_find(list, item) {
+                    for (var i = 0; i < list.length; i++) {
+                        if (item == list[i]) {
+                            return i;
+                        }
+                    }
+                    return -1;
                 }
 
-                this.reset = function () {
-                  this.prizes = [];
-                  this.candidates = [];
-                  this.results = [];
+                // 从数组中删除元素. 返回新数组.
+                function array_del(list, item) {
+                    var arr = [];
+                    for (var i = 0; i < list.length; i++) {
+                        if (item != list[i]) {
+                            arr.push(list[i]);
+                        }
+                    }
+                    return arr;
                 }
 
-                this.process = function () {
-                  show_results();
-
-                  // 先更新状态再执行函数
-                  switch (self.action) {
-                    case 'open':
-                      self.action = 'step_open';
-                      $('#rotate_div').hide();
-                      on_open();
-                      $('#rotate_div').fadeIn('slow');
-                      break;
-                    case 'close':
-                      self.action = '';
-                      on_close();
-                      break;
-                    case 'step_open':
-                      self.action = 'rotate_start';
-                      $('#rotate_div').hide();
-                      on_step_open();
-                      $('#rotate_div').fadeIn('fast');
-                      break;
-                    case 'step_close':
-                      if (self.step == self.prizes.length) {
-                        self.action = 'close';
-                      } else {
-                        self.action = 'step_open';
-                      }
-                      on_step_close();
-                      break;
-                    case 'rotate_start':
-                      self.action = 'rotate_stop';
-                      on_rotate_start();
-                      break;
-                    case 'rotate_stop':
-                      on_rotate_stop();
-                      break;
-                    default:
-                      save_setting();
-                      break;
-                  }
-                };
-              }
-
-              function on_open() {
-                // show_current_step('活动说明');
-
-                var str = '<table align="center">';
-                str += '<tr><th>奖项</th><th>数量</th><th>奖品</th></tr>\n';
-                for (var i = game.prizes.length - 1; i >= 0; i--) {
-                  var p = game.prizes[i];
-                  str += '<tr><td>' + p.name + '</td><td>' + p.num + '</td><td>' + p.award + '</td></tr>\n';
-                }
-                str += '</table>';
-                print_box(str);
-              }
-
-              function on_close() {
-                show_current_step('');
-
-                $('#print_box').hide();
-                var str = '';
-                str += '<span><b style="font-size: 62px;">Congratulation 恭喜所有中奖者</b><span><br/>';
-                print_box(str);
-                $('#print_box').fadeIn('slow');
-              }
-
-              function on_step_open() {
-                show_current_step();
-                print_box("press 'Enter' to start");
-                $('#rolling_board').html('...');
-              }
-
-              function on_step_close() {
-                var str = '';
-                str += '<span style="font-size: 20px">&nbsp;中奖名单&nbsp;';
-                var r = game.results[game.step - 1].map((number) => number.replaceAll(/(?<=\d{3})\d(?=\d{4})/, "*"));
-                for (var n = 0; n < r.length; n++) {
-                  if (n % 2 == 0) {
-                    str += '<br/>' + r[n];
-                  } else {
-                    str += '&nbsp;<br/>&nbsp;' + r[n];
-                  }
-                }
-                str += '</span>';
-
-                print_box(str);
-                $('#rolling_board').slideUp('normal');
-              }
-
-              function on_rotate_start() {
-                $('#rolling_board').slideDown('normal');
-
-                game.interval = parseInt($('input[name=interval]').val());
-
-                game.stop = false;
-                game.rotate_index = 0;
-
-                // 打乱顺序
-                array_shuffle(game.candidates);
-
-                rotate_run();
-
-                show_current_step();
-                print_box("press 'Enter' to stop");
-              }
-
-
-              function on_rotate_stop() {
-                // 等一段随机时间再停止.
-                game.interval += parseInt(0.9 * game.interval);
-                setTimeout('game.stop=true', 230 + parseInt(230 * Math.random()));
-                //game.stop = true;
-              }
-
-
-              function rotate_run() {
-                String.prototype.replaceAll = function (FindText, RepText) {
-                  regExp = new RegExp(FindText, "g");
-                  return this.replace(regExp, RepText);
-                };
-                var num_a = game.prizes[game.step].num_a_time;
-                var size = game.prizes[game.step].num - game.results[game.step].length;
-                if (size > num_a) {
-                  size = num_a;
+                // 从数组中删除元素. 返回新数组.
+                function array_del_all(list, items) {
+                    var arr = [];
+                    for (var i = 0; i < list.length; i++) {
+                        if (array_find(items, list[i]) == -1) {
+                            arr.push(list[i]);
+                        }
+                    }
+                    return arr;
                 }
 
-                var arr = array_slice(game.candidates, game.rotate_index, size);
-                $('#rolling_board').html(arr.map((number) => number.replaceAll(/(?<=\d{3})\d(?=\d{4})/, "*")).join(' '));
+                /**
+                 * 把数组当作环形的, 返回从start开始, 一共count个元素.
+                 * 如果count大于数组长度, 返回整个数组.
+                 */
+                function array_slice(list, start, count) {
+                    var ret;
 
-                game.rotate_index += num_a;
-                if (game.rotate_index >= game.candidates.length) {
-                  game.rotate_index -= game.candidates.length;
+                    ret = list.slice(start, start + count);
+                    if (ret.length < count) {
+                        ret = ret.concat(list.slice(0, count - ret.length));
+                    }
+
+                    return ret;
                 }
 
-                if (game.stop) {
-                  game.action = 'rotate_start';
-
-                  game.results[game.step] = game.results[game.step].concat(arr);
-                  game.candidates = array_del_all(game.candidates, arr);
-
-                  show_results();
-                  print_box("press 'Enter' to continue");
-
-                  if (game.results[game.step].length == game.prizes[game.step].num) {
-                    game.step++;
-                    game.action = 'step_close';
-                  }
-
-                  var h = '<span style="color: black; font-size: 20px">' + $('#rolling_board').html() + '</span>';
-                  $('#rolling_board').html(h)
-                } else {
-                  setTimeout('rotate_run()', game.interval);
-                }
-              }
-
-
-              function show_current_step(str) {
-                if (str == undefined) {
-                  var found = game.results[game.step].length;
-                  var all = game.prizes[game.step].num;
-                  var num_a = game.prizes[game.step].num_a_time;
-                  var b = (num_a + found) > all ? all : (num_a + found);
-
-                  var str = game.prizes[game.step].name;
-                  if (num_a != all) {
-                    str += ', ' + (found + 1) + '-' + all;
-                  }
-                }
-                if (str == '') {
-                  $('#current_step').hide('fast');
-                } else {
-                  $('#current_step').html(str);
-                  $('#current_step').show();
-                }
-              }
-
-              function print_box(str) {
-                if (str == undefined) {
-                  var str = '<span>';
-                  var r = game.results[game.step];
-                  for (var n = 0; n < r.length; n++) {
-                    str += r[n] + ' &nbsp;';
-                  }
-                  str += '</span>';
-                }
-                if (str == '') {
-                  $('#print_box').hide('fast');
-                } else {
-                  $('#print_box').html(str);
-                  $('#print_box').show();
-                }
-              }
-
-              function show_results() {
-                String.prototype.replaceAll = function (FindText, RepText) {
-                  regExp = new RegExp(FindText, "g");
-                  return this.replace(regExp, RepText);
-                };
-                var str = '';
-                for (var i = game.results.length - 1; i >= 0; i--) {
-                  str += '<h2>' + game.prizes[i].name + '</h2>';
-                  var r = game.results[i];
-                  for (var n = 0; n < r.length; n++) {
-                    str += r[n] + '<br/>';
-                  }
-                  str += '<br/>';
+                // 扰乱数组元素的顺序.
+                function array_shuffle(list) {
+                    var len = list.length;
+                    for (var i = 0; i < len * 5; i++) {
+                        var p1 = parseInt(len * Math.random());
+                        var p2 = parseInt(len * Math.random());
+                        var tmp = list[p1];
+                        list[p1] = list[p2];
+                        list[p2] = tmp;
+                    }
                 }
 
-                str += '---------------------------------------------------------------------------------------------------------<br/>';
+                /*
+                状态/动作
 
-                var str2 = '';
-
-                for (var i = game.results.length - 1; i >= 0; i--) {
-                  str2 += '<h2>' + game.prizes[i].name + '</h2>';
-                  var r = game.results[i];
-                  for (var n = 0; n < r.length; n++) {
-                    str2 += r[n] + '<br/>';
-                  }
-                  str2 = str2.replaceAll(/(?<=\d{3})\d(?=\d{4})/, "*");
-                  str2 += '<br/>';
+                开场(open)
+                循环{
+                    奖项开场(step_open)
+                    奖项抽奖(rotate_start)
+                    奖项抽奖(rotate_stop)
+                    奖项闭场(step_close)
                 }
-                str += str2;
+                闭场(close)
 
-                $('#tabs-3').html(str);
-              }
+                */
+                var Game = function () {
+                    var self = this;
 
+                    this.step = -1;
+                    this.interval = 100;
+                    this.rotate_index = 0;
+                    self.action = 'open';
 
-              function save_setting() {
-                game.reset();
+                    this.prizes = [];
+                    this.candidates = [];
+                    this.results = [];
 
-                var ps = $.trim($('textarea[name=prizes]').val()).split('\n');
-                for (var i = 0; i < ps.length; i++) {
-                  var p = $.trim(ps[i]);
-                  if (p.length == 0) {
-                    continue;
-                  }
-                  var ex = p.split('|');
-                  var prize = {
-                    name: $.trim(ex[0]),
-                    num: parseInt($.trim(ex[1])),
-                    num_a_time: parseInt($.trim(ex[2])),
-                    award: $.trim(ex[3])
-                  };
-                  game.prizes.push(prize);
+                    this.init = function () {
+                        this.step = 0;
+                        this.stop = false;
+                        this.rotate_index = 0;
+                        self.action = 'open';
+                        this.results = [];
+
+                        for (var i = 0; i < self.prizes.length; i++) {
+                            var p = self.prizes[i];
+                            self.results[i] = [];
+                        }
+
+                        show_current_step('');
+                        var str = "press 'Enter' to start";
+                        str += '<br/><br/>';
+                        print_box("press 'Enter' to start");
+
+                        $('#rolling_board').hide();
+                        $('#rotate_div').css('background', '');
+                    }
+
+                    this.reset = function () {
+                        this.prizes = [];
+                        this.candidates = [];
+                        this.results = [];
+                    }
+
+                    this.process = function () {
+                        show_results();
+
+                        // 先更新状态再执行函数
+                        switch (self.action) {
+                            case 'open':
+                                self.action = 'step_open';
+                                $('#rotate_div').hide();
+                                on_open();
+                                $('#rotate_div').fadeIn('slow');
+                                break;
+                            case 'close':
+                                self.action = '';
+                                on_close();
+                                break;
+                            case 'step_open':
+                                self.action = 'rotate_start';
+                                $('#rotate_div').hide();
+                                on_step_open();
+                                $('#rotate_div').fadeIn('fast');
+                                break;
+                            case 'step_close':
+                                if (self.step == self.prizes.length) {
+                                    self.action = 'close';
+                                } else {
+                                    self.action = 'step_open';
+                                }
+                                on_step_close();
+                                break;
+                            case 'rotate_start':
+                                self.action = 'rotate_stop';
+                                on_rotate_start();
+                                break;
+                            case 'rotate_stop':
+                                on_rotate_stop();
+                                break;
+                            default:
+                                save_setting();
+                                break;
+                        }
+                    };
                 }
 
-                var ps = $.trim($('textarea[name=candidates]').val()).replace(/,/g, '\n').split('\n');
-                for (var i = 0; i < ps.length; i++) {
-                  var p = $.trim(ps[i]);
-                  if (p.length == 0) {
-                    continue;
-                  }
-                  game.candidates.push(p);
+                function on_open() {
+                    // show_current_step('活动说明');
+
+                    var str = '<table align="center">';
+                    str += '<tr><th>奖项</th><th>数量</th><th>奖品</th></tr>\n';
+                    for (var i = game.prizes.length - 1; i >= 0; i--) {
+                        var p = game.prizes[i];
+                        str += '<tr><td>' + p.name + '</td><td>' + p.num + '</td><td>' + p.award + '</td></tr>\n';
+                    }
+                    str += '</table>';
+                    print_box(str);
                 }
 
-                $('#event_title span').html($('input[name=title]').val());
-                //$('#tabs-1').css('background', 'url(' + $('input[name=background_image]').val() + ') center center no-repeat');
+                function on_close() {
+                    show_current_step('');
 
-                game.init();
-              }
+                    $('#print_box').hide();
+                    var str = '';
+                    str += '<span><b style="font-size: 62px;">Congratulation 恭喜所有中奖者</b><span><br/>';
+                    print_box(str);
+                    $('#print_box').fadeIn('slow');
+                }
+
+                function on_step_open() {
+                    show_current_step();
+                    print_box("press 'Enter' to start");
+                    $('#rolling_board').html('...');
+                }
+
+                function on_step_close() {
+                    var str = '';
+                    str += '<span style="font-size: 20px">&nbsp;中奖名单&nbsp;';
+                    var r = game.results[game.step - 1].map((number) => number.replaceAll(/(?<=\d{3})\d(?=\d{4})/, "*"));
+                    for (var n = 0; n < r.length; n++) {
+                        if (n % 2 == 0) {
+                            str += '<br/>' + r[n];
+                        } else {
+                            str += '&nbsp;<br/>&nbsp;' + r[n];
+                        }
+                    }
+                    str += '</span>';
+
+                    print_box(str);
+                    $('#rolling_board').slideUp('normal');
+                }
+
+                function on_rotate_start() {
+                    $('#rolling_board').slideDown('normal');
+
+                    game.interval = parseInt($('input[name=interval]').val());
+
+                    game.stop = false;
+                    game.rotate_index = 0;
+
+                    // 打乱顺序
+                    array_shuffle(game.candidates);
+
+                    rotate_run();
+
+                    show_current_step();
+                    print_box("press 'Enter' to stop");
+                }
+
+
+                function on_rotate_stop() {
+                    // 等一段随机时间再停止.
+                    game.interval += parseInt(0.9 * game.interval);
+                    setTimeout('game.stop=true', 230 + parseInt(230 * Math.random()));
+                    //game.stop = true;
+                }
+
+
+                function rotate_run() {
+                    String.prototype.replaceAll = function (FindText, RepText) {
+                        regExp = new RegExp(FindText, "g");
+                        return this.replace(regExp, RepText);
+                    };
+                    var num_a = game.prizes[game.step].num_a_time;
+                    var size = game.prizes[game.step].num - game.results[game.step].length;
+                    if (size > num_a) {
+                        size = num_a;
+                    }
+
+                    var arr = array_slice(game.candidates, game.rotate_index, size);
+                    $('#rolling_board').html(arr.map((number) => number.replaceAll(/(?<=\d{3})\d(?=\d{4})/, "*")).join(' '));
+
+                    game.rotate_index += num_a;
+                    if (game.rotate_index >= game.candidates.length) {
+                        game.rotate_index -= game.candidates.length;
+                    }
+
+                    if (game.stop) {
+                        game.action = 'rotate_start';
+
+                        game.results[game.step] = game.results[game.step].concat(arr);
+                        game.candidates = array_del_all(game.candidates, arr);
+
+                        show_results();
+                        print_box("press 'Enter' to continue");
+
+                        if (game.results[game.step].length == game.prizes[game.step].num) {
+                            game.step++;
+                            game.action = 'step_close';
+                        }
+
+                        var h = '<span style="color: black; font-size: 20px">' + $('#rolling_board').html() + '</span>';
+                        $('#rolling_board').html(h)
+                    } else {
+                        setTimeout('rotate_run()', game.interval);
+                    }
+                }
+
+
+                function show_current_step(str) {
+                    if (str == undefined) {
+                        var found = game.results[game.step].length;
+                        var all = game.prizes[game.step].num;
+                        var num_a = game.prizes[game.step].num_a_time;
+                        var b = (num_a + found) > all ? all : (num_a + found);
+
+                        var str = game.prizes[game.step].name;
+                        if (num_a != all) {
+                            str += ', ' + (found + 1) + '-' + all;
+                        }
+                    }
+                    if (str == '') {
+                        $('#current_step').hide('fast');
+                    } else {
+                        $('#current_step').html(str);
+                        $('#current_step').show();
+                    }
+                }
+
+                function print_box(str) {
+                    if (str == undefined) {
+                        var str = '<span>';
+                        var r = game.results[game.step];
+                        for (var n = 0; n < r.length; n++) {
+                            str += r[n] + ' &nbsp;';
+                        }
+                        str += '</span>';
+                    }
+                    if (str == '') {
+                        $('#print_box').hide('fast');
+                    } else {
+                        $('#print_box').html(str);
+                        $('#print_box').show();
+                    }
+                }
+
+                function show_results() {
+                    String.prototype.replaceAll = function (FindText, RepText) {
+                        regExp = new RegExp(FindText, "g");
+                        return this.replace(regExp, RepText);
+                    };
+                    var str = '';
+                    for (var i = game.results.length - 1; i >= 0; i--) {
+                        str += '<h2>' + game.prizes[i].name + '</h2>';
+                        var r = game.results[i];
+                        for (var n = 0; n < r.length; n++) {
+                            str += r[n] + '<br/>';
+                        }
+                        str += '<br/>';
+                    }
+
+                    str += '---------------------------------------------------------------------------------------------------------<br/>';
+
+                    var str2 = '';
+
+                    for (var i = game.results.length - 1; i >= 0; i--) {
+                        str2 += '<h2>' + game.prizes[i].name + '</h2>';
+                        var r = game.results[i];
+                        for (var n = 0; n < r.length; n++) {
+                            str2 += r[n] + '<br/>';
+                        }
+                        str2 = str2.replaceAll(/(?<=\d{3})\d(?=\d{4})/, "*");
+                        str2 += '<br/>';
+                    }
+                    str += str2;
+
+                    $('#tabs-3').html(str);
+                }
+
+
+                function save_setting() {
+                    game.reset();
+
+                    var ps = $.trim($('textarea[name=prizes]').val()).split('\n');
+                    for (var i = 0; i < ps.length; i++) {
+                        var p = $.trim(ps[i]);
+                        if (p.length == 0) {
+                            continue;
+                        }
+                        var ex = p.split('|');
+                        var prize = {
+                            name: $.trim(ex[0]),
+                            num: parseInt($.trim(ex[1])),
+                            num_a_time: parseInt($.trim(ex[2])),
+                            award: $.trim(ex[3])
+                        };
+                        game.prizes.push(prize);
+                    }
+
+                    var ps = $.trim($('textarea[name=candidates]').val()).replace(/,/g, '\n').split('\n');
+                    for (var i = 0; i < ps.length; i++) {
+                        var p = $.trim(ps[i]);
+                        if (p.length == 0) {
+                            continue;
+                        }
+                        game.candidates.push(p);
+                    }
+
+                    $('#event_title span').html($('input[name=title]').val());
+                    //$('#tabs-1').css('background', 'url(' + $('input[name=background_image]').val() + ') center center no-repeat');
+
+                    game.init();
+                }
             </script>
 
         </div>
